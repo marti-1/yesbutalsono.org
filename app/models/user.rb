@@ -5,25 +5,42 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   # validate username presence and uniqueness
   validates :username, presence: true, uniqueness: true
 
-  before_create :set_username
+  before_validation :set_random_username, if: :new_record?
 
-  private 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.username = build_random_username(user.email)
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
+    end
+  end
 
-  def set_username
-    tmp_username = build_tmp_username
+  protected
+
+  def build_random_username email
+    tmp_username = build_tmp_username(email)
     # Check if the username already exists
     while User.find_by(username: tmp_username)
-      tmp_username = build_tmp_username
+      tmp_username = build_tmp_username(email)
     end
-    self.username = tmp_username
+    tmp_username
   end
 
-  def build_tmp_username
-    "#{self.email.split("@").first}-#{SecureRandom.random_number(1000)}"
+  def build_tmp_username email
+    "#{email.split("@").first}-#{SecureRandom.random_number(1000)}"
   end
+
+  def set_random_username
+    self.username = build_random_username(self.email)
+  end
+
 end

@@ -19,3 +19,36 @@
 .container {
     max-width: 700px; /* Set your desired max-width value here */
 }
+
+.oauth-btn {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 100%;
+    // padding: 10px;
+    box-sizing: border-box;
+
+    .label {
+        padding-top: 8px;
+    }
+}
+
+.line-with-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    color: rgb(99, 107, 116);
+    font-size: 13px;
+
+    div {
+        padding: 0 10px;
+    }
+  
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgb(180, 182, 184);
+    }
+}
