@@ -1,0 +1,14 @@
+<ul class="nav nav-underline mb-3">
+  <li class="nav-item">
+    <%= link_to 'Profile', user_path(current_user), class: 'nav-link active' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Settings', edit_user_registration_path, class: 'nav-link' %>
+  </li>
+</ul>
+
+<h2><%= current_user.username || "<username>" %></h2>
+
+<p class="bio">
+  <strong>Bio:</strong> <%= current_user.bio || "This user likes to keep an air of mystery around them." %>
+</p>

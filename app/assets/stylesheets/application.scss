@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+ /* Override max-width for .container class */
+.container {
+    max-width: 700px; /* Set your desired max-width value here */
+}

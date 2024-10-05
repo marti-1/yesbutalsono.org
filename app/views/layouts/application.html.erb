@@ -18,8 +18,53 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <!-- Site Name on the Left -->
+        <a class="navbar-brand" href="/">YbaN</a>
+
+        <!-- Toggle button for responsive navbar -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <% if not user_signed_in? %>
+              <!-- Sign Up Button -->
+              <li class="nav-item">
+                <a class="btn btn-outline-primary me-2" href="<%= new_user_registration_path %>">Sign up</a>
+              </li>
+              <!-- Log In Button -->
+              <li class="nav-item">
+                <a class="btn btn-outline-secondary" href="<%= new_user_session_path %>">Log in</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Profile', user_path(current_user), class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Log out', destroy_user_session_path, 'data-turbo-method': :delete, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <!-- show notifications only if they are present -->
+      <% if notice %>
+        <p class="notice alert alert-info mt-3"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger mt-3"><%= alert %></p>
+      <% end %>
+      
+      <%= yield %>
+    </div>
+    
+
   </body>
 </html>
