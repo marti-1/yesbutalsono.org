@@ -1,1 +1,15 @@
-<h1 class="proposition-title mb-4">"<%= @proposition.body %>"</h1>
+<div class="d-flex justify-content-start proposition-full">
+
+    <div class="votes mr-3 me-3">
+        <%= button_to '▲', upvote_proposition_path(@proposition), method: :post, class: 'btn btn-light' %>
+        <h5><%= @proposition.cached_votes_total %></h5>
+        <%= button_to '▼', downvote_proposition_path(@proposition), method: :post, class: 'btn btn-light' %>
+    </div>
+
+    <div>
+        <h2 class="title">"<%= @proposition.body %>"</h2>
+        by <%= link_to @proposition.author.username, user_path(@proposition.author) %>
+    </div>
+
+
+</div>

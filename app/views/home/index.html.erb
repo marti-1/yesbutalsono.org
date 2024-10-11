@@ -9,7 +9,7 @@
     <div class="proposition-body d-flex">
       <div class="vote-count">
         <h5>
-          444<br>
+          <%= proposition.cached_votes_total %><br>
           votes
         </h5>
       </div>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="proposition-footer">
-      <small>author  <%= proposition.author.username %></small>
+      <small>by <%= proposition.author.username %></small>
     </div>
   </div>
 <% end %>
