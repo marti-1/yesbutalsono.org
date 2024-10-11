@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_05_113219) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_11_090553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_05_113219) do
     t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["author_id"], name: "index_propositions_on_author_id"
+    t.index ["slug"], name: "index_propositions_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

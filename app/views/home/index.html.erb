@@ -1,4 +1,27 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h2 class="mb-0">Propositions</h2>
-  <%= link_to 'New Proposition', '#', class: 'btn btn-primary' %>
+  <%= link_to 'New Proposition', new_proposition_path, class: 'btn btn-primary' %>
+</div>
+
+<div>
+<% @propositions.each do |proposition| %>
+  <div class="proposition">
+    <div class="proposition-body d-flex">
+      <div class="vote-count">
+        <h5>
+          444<br>
+          votes
+        </h5>
+      </div>
+      <div class="body">
+        <%= link_to proposition_path(proposition) do %>
+          <h5><%= proposition.body %></h5>
+        <% end %>
+      </div>
+    </div>
+    <div class="proposition-footer">
+      <small>author  <%= proposition.author.username %></small>
+    </div>
+  </div>
+<% end %>
 </div>

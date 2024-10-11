@@ -52,3 +52,23 @@
       border-bottom: 1px solid rgb(180, 182, 184);
     }
 }
+
+.proposition {
+    padding: 10px 0 10px 0;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    .proposition-body {
+        .vote-count {
+            padding-top: 5px;
+            width: 65px;
+            height: 65px;
+            background-color: green;
+            text-align: center;
+            color: white;
+        }
+        .body {
+            padding-left: 10px;
+            height: 65px;
+        }
+    }
+}
