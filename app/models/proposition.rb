@@ -9,6 +9,8 @@ class Proposition < ApplicationRecord
   # validate presence of body
   validates :body, presence: true
 
+  after_create :give_author_upvote
+
   def yes_arguments
     arguments.where(side: true)
   end
@@ -57,6 +59,12 @@ class Proposition < ApplicationRecord
       ActiveRecord::Base.send(:sanitize_sql_array, [sql, id])
     )
     reload
+  end
+
+  private
+
+  def give_author_upvote
+    upvote_by(author)
   end
 
 end

@@ -1,0 +1,17 @@
+<%= form_with(model: @proposition, local: true) do |form| %>
+  <div class="field mb-3">
+    <%= form.label :title, 'Name' %>
+    <%= form.text_field :body, class: "form-control  #{error_class(@proposition, :body)}", placeholder: 'e.g. Earth\'s climate is getting worse' %>
+    <%= error_message(@proposition, :body) %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :description, 'Short description' %>
+    <%= form.text_area :description, class: "form-control  #{error_class(@proposition, :description)}", placeholder: 'e.g. The proposition focuses on the period beginning with industrialization.' %>
+    <%= error_message(@proposition, :description) %>
+  </div>
+
+  <div>
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

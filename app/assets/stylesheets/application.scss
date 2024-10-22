@@ -17,7 +17,7 @@
 
  /* Override max-width for .container class */
 .container {
-    max-width: 700px; /* Set your desired max-width value here */
+    max-width: 900px; /* Set your desired max-width value here */
 }
 
 .oauth-btn {
@@ -53,7 +53,7 @@
     }
 }
 
-.proposition-full {
+#proposition {
     .votes {
         text-align: center;
     }
@@ -91,5 +91,12 @@
     .argument {
         padding: 10px 0 10px 0;
         border-bottom: 1px solid grey;
+        h1 {
+            font-size: 1.2rem;
+        }
     }
+}
+
+#argument_body {
+    height: 200px;
 }

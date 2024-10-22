@@ -1,3 +1,17 @@
-<div class="argument">
-    <%= argument.body %>
+<div id="argument-<%= argument.id %>" class="argument">
+  <div class="body">
+    <%= markdown(argument.body) %>
+  </div>
+  <div class="actions">
+    <small>
+    proposed <%= time_ago_in_words(argument.created_at) %> ago by <%= link_to argument.author.username, argument.author %>
+    </small>
+    <span data-controller="clipboard">
+      <%= link_to 'Ref', '#', data: {action: 'clipboard#copy', clipboardText: proposition_url(argument.proposition, anchor: "argument-#{argument.id}")} %>
+    </span>
+    <% if argument.author == current_user %>
+      <%= link_to 'Edit', edit_proposition_argument_path(argument.proposition, argument) %>
+      <%= link_to 'Destroy', [argument.proposition, argument], data: { turbo_confirm: 'Are you sure?', turbo_method: :delete  } %>
+    <% end %>
+  </div>
 </div>

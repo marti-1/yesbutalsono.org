@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_18_122659) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_22_143307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_122659) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.integer "cached_votes_total", default: 0
+    t.text "description"
     t.index ["author_id"], name: "index_propositions_on_author_id"
     t.index ["slug"], name: "index_propositions_on_slug", unique: true
   end

@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-start proposition-full mb-3">
+<div id="proposition" class="d-flex justify-content-start mb-3">
 
     <div class="votes mr-3 me-3">
         <%= button_to '▲', upvote_proposition_path(@proposition), method: :post, class: 'btn btn-light' %>
@@ -8,7 +8,18 @@
 
     <div>
         <h2 class="title"><%= @proposition.body %></h2>
+        
+        <% if @proposition.description.present? %>
+            <div class="description"><%= markdown(@proposition.description) %></div>
+        <% end %>
+
+
         by <%= link_to @proposition.author.username, user_path(@proposition.author) %>
+        <% if @proposition.author == current_user %>
+            <%= link_to 'Edit', edit_proposition_path(@proposition) %>
+            <%= link_to 'Delete', proposition_path(@proposition), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        <% end %>
+
     </div>
 </div>
 
@@ -18,17 +29,13 @@
             <div class="name">Yes</div>
             <%= link_to '+', new_proposition_argument_path(@proposition, side: 'yes'), method: :get, class: 'btn btn-primary' %>
         </div>
-        <% @proposition.yes_arguments.each do |a| %>
-            <%= render 'arguments/argument', argument: a %>
-        <% end %>
+        <%= render partial: 'arguments/argument', collection: @proposition.yes_arguments, as: :argument %>
     </div>
     <div class="col">
         <div class="side d-flex justify-content-between">
             <div class="name">No</div>
             <%= link_to '+', new_proposition_argument_path(@proposition, side: 'no'), method: :get, class: 'btn btn-primary' %>
         </div>
-        <% @proposition.no_arguments.each do |a| %>
-            <%= render 'arguments/argument', argument: a %>
-        <% end %>
+        <%= render partial: 'arguments/argument', collection: @proposition.no_arguments, as: :argument %>
     </div>
 </div>
