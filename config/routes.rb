@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post :upvote
       post :downvote
     end
+    resources :arguments
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

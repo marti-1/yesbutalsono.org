@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  side: false
+  proposition: one
+  author: one
+
+two:
+  body: MyText
+  side: false
+  proposition: two
+  author: two

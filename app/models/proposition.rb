@@ -4,9 +4,18 @@ class Proposition < ApplicationRecord
 
   belongs_to :author, class_name: 'User'
   has_many :votes, as: :votable
+  has_many :arguments, dependent: :destroy
 
   # validate presence of body
   validates :body, presence: true
+
+  def yes_arguments
+    arguments.where(side: true)
+  end
+
+  def no_arguments
+    arguments.where(side: false)
+  end
 
   def upvote_by(user)
     vote(user, 1)

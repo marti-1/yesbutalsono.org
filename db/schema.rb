@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_11_120322) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_18_122659) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "arguments", force: :cascade do |t|
+    t.text "body"
+    t.boolean "side", default: false
+    t.bigint "proposition_id", null: false
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_arguments_on_author_id"
+    t.index ["proposition_id"], name: "index_arguments_on_proposition_id"
+  end
 
   create_table "propositions", force: :cascade do |t|
     t.string "body"
@@ -53,6 +64,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_11_120322) do
     t.index ["votable_type", "votable_id"], name: "index_votes_on_votable"
   end
 
+  add_foreign_key "arguments", "propositions"
+  add_foreign_key "arguments", "users", column: "author_id"
   add_foreign_key "propositions", "users", column: "author_id"
   add_foreign_key "votes", "users"
 end

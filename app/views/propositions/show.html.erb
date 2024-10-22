@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-start proposition-full">
+<div class="d-flex justify-content-start proposition-full mb-3">
 
     <div class="votes mr-3 me-3">
         <%= button_to '▲', upvote_proposition_path(@proposition), method: :post, class: 'btn btn-light' %>
@@ -7,9 +7,28 @@
     </div>
 
     <div>
-        <h2 class="title">"<%= @proposition.body %>"</h2>
+        <h2 class="title"><%= @proposition.body %></h2>
         by <%= link_to @proposition.author.username, user_path(@proposition.author) %>
     </div>
+</div>
 
-
+<div id="arguments" class="row gx-3">
+    <div class="col">
+        <div class="side d-flex justify-content-between">
+            <div class="name">Yes</div>
+            <%= link_to '+', new_proposition_argument_path(@proposition, side: 'yes'), method: :get, class: 'btn btn-primary' %>
+        </div>
+        <% @proposition.yes_arguments.each do |a| %>
+            <%= render 'arguments/argument', argument: a %>
+        <% end %>
+    </div>
+    <div class="col">
+        <div class="side d-flex justify-content-between">
+            <div class="name">No</div>
+            <%= link_to '+', new_proposition_argument_path(@proposition, side: 'no'), method: :get, class: 'btn btn-primary' %>
+        </div>
+        <% @proposition.no_arguments.each do |a| %>
+            <%= render 'arguments/argument', argument: a %>
+        <% end %>
+    </div>
 </div>

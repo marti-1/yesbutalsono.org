@@ -78,3 +78,18 @@
         }
     }
 }
+
+#arguments {
+    .side {
+        background-color: beige;
+        padding: 5px;
+        .name {
+            padding: 5px;
+            font-weight: bold;
+        }
+    }
+    .argument {
+        padding: 10px 0 10px 0;
+        border-bottom: 1px solid grey;
+    }
+}
