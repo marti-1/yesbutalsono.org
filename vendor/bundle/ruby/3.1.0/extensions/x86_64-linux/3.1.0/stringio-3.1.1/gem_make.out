@@ -1,0 +1,15 @@
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.1/ext/stringio
+/home/Martynas/.rbenv/versions/3.1.2/bin/ruby -I /home/Martynas/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20241024-48880-gcwdvi.rb extconf.rb
+creating Makefile
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= clean
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\=
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.1/ext/stringio
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20241024-48880-akgy7c

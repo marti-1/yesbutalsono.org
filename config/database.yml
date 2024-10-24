@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: yban_production
-  username: yban
-  password: <%= ENV["YBAN_DATABASE_PASSWORD"] %>
+  database: yban
+  username: postgres
+  password: <%= Rails.application.credentials.yban_database_password %>

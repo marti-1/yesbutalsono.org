@@ -1,0 +1,13 @@
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+/home/Martynas/.rbenv/versions/3.1.2/bin/ruby -I /home/Martynas/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20241024-48880-3rmxi5.rb extconf.rb
+creating Makefile
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+make DESTDIR\= clean
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+make DESTDIR\=
+make: Nothing to be done for 'all'.
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/json-2.7.2/ext/json
+make DESTDIR\= install

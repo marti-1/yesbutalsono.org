@@ -1,0 +1,15 @@
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+/home/Martynas/.rbenv/versions/3.1.2/bin/ruby -I /home/Martynas/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20241024-48880-qao09o.rb extconf.rb
+creating Makefile
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20241024-48880-hf17mx/skiptrace/internal
