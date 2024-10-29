@@ -1,26 +1,41 @@
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="d-flex justify-content-between align-items-center mb-4">
   <h2 class="mb-0">Propositions</h2>
   <%= link_to 'New Proposition', new_proposition_path, class: 'btn btn-primary' %>
 </div>
 
 <div>
 <% @propositions.each do |proposition| %>
-  <div class="proposition">
-    <div class="proposition-body d-flex">
-      <div class="vote-count">
-        <h5>
-          <%= proposition.cached_votes_total %><br>
-          votes
-        </h5>
+  <div class="proposition d-flex">
+
+    <div class="summary">
+      <div class="stats-item">
+        <%= proposition.cached_votes_total %> <%= 'vote'.pluralize(proposition.cached_votes_total) %>
       </div>
-      <div class="body">
-        <%= link_to proposition_path(proposition) do %>
-          <h5><%= proposition.body %></h5>
-        <% end %>
+      <div class="stats-item">
+        <strong>Yes:</strong> <%= proposition.yes_arguments.count %>
+      </div>
+      <div class="stats-item">
+        <strong>No:</strong> <%= proposition.no_arguments.count %>
       </div>
     </div>
-    <div class="proposition-footer">
-      <small>by <%= proposition.author.username %></small>
+
+    <div class="content ps-4">
+      <h5 class="title">
+        <%= link_to proposition.body, proposition_path(proposition) %>
+      </h5>
+      <% if proposition.description.present? %>
+        <div class="description">
+          <small>
+            <%= markdown(proposition.description) %>
+          </small>
+        </div>
+      <% end %>
+      <div class="author-info">
+        <small>
+          proposed by <%= link_to proposition.author.username, proposition.author %>
+          <%= time_ago_in_words(proposition.created_at) %> ago
+        </small>
+      </div>
     </div>
   </div>
 <% end %>

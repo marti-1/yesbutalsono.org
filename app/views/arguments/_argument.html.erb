@@ -1,17 +1,24 @@
-<div id="argument-<%= argument.id %>" class="argument">
-  <div class="body">
+<div id="argument-<%= argument.id %>" class="argument pt-4 pb-4">
+  <div class="content">
     <%= markdown(argument.body) %>
   </div>
-  <div class="actions">
-    <small>
-    proposed <%= time_ago_in_words(argument.created_at) %> ago by <%= link_to argument.author.username, argument.author %>
-    </small>
-    <span data-controller="clipboard">
-      <%= link_to 'Ref', '#', data: {action: 'clipboard#copy', clipboardText: proposition_url(argument.proposition, anchor: "argument-#{argument.id}")} %>
-    </span>
-    <% if argument.author == current_user %>
-      <%= link_to 'Edit', edit_proposition_argument_path(argument.proposition, argument) %>
-      <%= link_to 'Destroy', [argument.proposition, argument], data: { turbo_confirm: 'Are you sure?', turbo_method: :delete  } %>
-    <% end %>
+  <div class="details d-flex justify-content-between">
+    <div class="actions">
+      <small>
+        <span data-controller="clipboard">
+          <%= link_to 'Ref', '#', class: 'text-secondary', data: {action: 'clipboard#copy', clipboardText: proposition_url(argument.proposition, anchor: "argument-#{argument.id}")} %>
+        </span>
+        <% if argument.author == current_user %>
+          <%= link_to 'Edit', edit_proposition_argument_path(argument.proposition, argument), class: 'text-secondary' %>
+          <%= link_to 'Destroy', [argument.proposition, argument], class: 'text-secondary', data: { turbo_confirm: 'Are you sure?', turbo_method: :delete  } %>
+        <% end %>
+      </small>
+    </div>
+    <div class="author-info">
+      <small>
+        by <%= link_to argument.author.username, argument.author %>
+        <%= time_ago_in_words(argument.created_at) %> ago 
+      </small>
+    </div>
   </div>
 </div>

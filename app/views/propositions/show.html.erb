@@ -1,41 +1,58 @@
-<div id="proposition" class="d-flex justify-content-start mb-3">
+<div id="proposition" class="d-flex justify-content-start mb-4">
 
-    <div class="votes mr-3 me-3">
-        <%= button_to '▲', upvote_proposition_path(@proposition), method: :post, class: 'btn btn-light' %>
-        <h5><%= @proposition.cached_votes_total %></h5>
-        <%= button_to '▼', downvote_proposition_path(@proposition), method: :post, class: 'btn btn-light' %>
+    <div class="votes me-4">
+        <%= button_to '▲', upvote_proposition_path(@proposition), method: :post, class: 'btn btn-outline-secondary btn-sm' %>
+        <h5 class="pt-2"><%= @proposition.cached_votes_total %></h5>
+        <%= button_to '▼', downvote_proposition_path(@proposition), method: :post, class: 'btn btn-outline-secondary btn-sm' %>
     </div>
 
-    <div>
+    <div class="content">
         <h2 class="title"><%= @proposition.body %></h2>
         
         <% if @proposition.description.present? %>
             <div class="description"><%= markdown(@proposition.description) %></div>
         <% end %>
 
+        <div class="details d-flex justify-content-between">
+            
+            <% if @proposition.author == current_user %>
+                <div class="actions">
+                    <small>
+                        <%= link_to 'Edit', edit_proposition_path(@proposition), class: 'text-secondary' %>
+                        <%= link_to 'Delete', proposition_path(@proposition), class: 'text-secondary', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+                    </small>
+                </div>
+            <% end %>
 
-        by <%= link_to @proposition.author.username, user_path(@proposition.author) %>
-        <% if @proposition.author == current_user %>
-            <%= link_to 'Edit', edit_proposition_path(@proposition) %>
-            <%= link_to 'Delete', proposition_path(@proposition), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-        <% end %>
+            <div>
+                <small>
+                    by <%= link_to @proposition.author.username, user_path(@proposition.author) %>
+                    <%= time_ago_in_words(@proposition.created_at) %> ago
+                </small>
+            </div>
+
+        </div>
 
     </div>
 </div>
 
-<div id="arguments" class="row gx-3">
+<div id="arguments" class="row gx-5">
     <div class="col">
-        <div class="side d-flex justify-content-between">
+        <div class="yes-side-header d-flex justify-content-between">
             <div class="name">Yes</div>
-            <%= link_to '+', new_proposition_argument_path(@proposition, side: 'yes'), method: :get, class: 'btn btn-primary' %>
+            <%= link_to 'Add', new_proposition_argument_path(@proposition, side: 'yes'), method: :get, class: 'btn btn-dark' %>
         </div>
-        <%= render partial: 'arguments/argument', collection: @proposition.yes_arguments, as: :argument %>
+        <div class="yes-side-arguments">
+            <%= render partial: 'arguments/argument', collection: @proposition.yes_arguments, as: :argument %>
+        </div>
     </div>
     <div class="col">
-        <div class="side d-flex justify-content-between">
+        <div class="no-side-header d-flex justify-content-between">
             <div class="name">No</div>
-            <%= link_to '+', new_proposition_argument_path(@proposition, side: 'no'), method: :get, class: 'btn btn-primary' %>
+            <%= link_to 'Add', new_proposition_argument_path(@proposition, side: 'no'), method: :get, class: 'btn btn-dark' %>
         </div>
-        <%= render partial: 'arguments/argument', collection: @proposition.no_arguments, as: :argument %>
+        <div class="no-side-arguments">
+            <%= render partial: 'arguments/argument', collection: @proposition.no_arguments, as: :argument %>
+        </div>
     </div>
 </div>

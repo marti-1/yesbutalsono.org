@@ -1,22 +1,5 @@
-<%= form_with(model: [@proposition, @argument], local: true) do |form| %>
-
-  <h4><%= @proposition.body %></h4>
-
-  <div class="field mb-3">
-      <%= form.label :side, "Side:" %>
-      <%= form.radio_button :side, true, class: "form-check-input" %>
-      <%= form.label :side, "Yes" %>
-      <%= form.radio_button :side, false, class: "form-check-input" %>
-      <%= form.label :side, "No" %>
+<div class="card">
+  <div class="card-body">
+    <%= render 'form' %>
   </div>
-
-  <div class="field mb-3">
-    <!-- <%= form.label :body %> -->
-    <%= form.text_area :body, class: "form-control #{error_class(@argument, :body)}" %>
-    <%= error_message(@argument, :body) %>
-  </div>
-
-  <div>
-    <%= form.submit 'Submit', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>

@@ -13,19 +13,50 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+@import "bootstrap";
+
+$red: #8C1328;
+$light-red: #D6CACC;
+$green: #3A5A31;
+$light-green: #CFD6CD;
+
+$grey-1: rgb(99, 107, 116);
+$grey-2: rgb(180, 182, 184);
+$grey-3: rgb(227, 230, 232);
+
+/*
+=general
+*/
+
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+/*
+=layout
+*/
 
  /* Override max-width for .container class */
 .container {
     max-width: 900px; /* Set your desired max-width value here */
 }
 
+footer {
+    height: 100px;
+}
+
+/*
+=elements
+*/
+
 .oauth-btn {
     background-color: white;
-    border: 1px solid lightgray;
+    border: 1px solid $grey-2;
     border-radius: 5px;
     width: 100%;
-    // padding: 10px;
     box-sizing: border-box;
 
     .label {
@@ -38,7 +69,7 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    color: rgb(99, 107, 116);
+    color: $grey-1;
     font-size: 13px;
 
     div {
@@ -49,7 +80,7 @@
     &::after {
       content: '';
       flex: 1;
-      border-bottom: 1px solid rgb(180, 182, 184);
+      border-bottom: 1px solid $grey-2;
     }
 }
 
@@ -57,46 +88,73 @@
     .votes {
         text-align: center;
     }
+    .content {
+        width: 100%;
+        .details {
+            text-align: right;
+            width: 100%;
+        }
+        .description {
+            font-size: 0.8rem;
+        }
+    }
 }
 
 .proposition {
     padding: 10px 0 10px 0;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    .proposition-body {
-        .vote-count {
-            padding-top: 5px;
-            width: 65px;
-            height: 65px;
-            background-color: green;
-            text-align: center;
-            color: white;
-        }
-        .body {
-            padding-left: 10px;
-            height: 65px;
+    border-top: 1px solid $grey-3;
+    .summary {
+        text-align: right;
+        width: 78px;
+    }
+    .content {
+        width: 100%;
+        .author-info {
+            text-align: right;
         }
     }
 }
 
 #arguments {
-    .side {
-        background-color: beige;
-        padding: 5px;
+    .yes-side-header {
+        border: 1px solid $green;
+        background-color: $light-green;
+    }
+    .no-side-header {
+        border: 1px solid $red;
+        background-color: $light-red;
+    }
+    .yes-side-header, .no-side-header {
+        border-top-left-radius: 6px;
+        padding: 5px 5px 5px 10px;
         .name {
-            padding: 5px;
+            padding-top: 5px;
             font-weight: bold;
         }
     }
+
+    .yes-side-arguments {
+        .argument {
+            border-bottom: 1px solid $green;
+        }
+    }
+
+    .no-side-arguments {
+        .argument {
+            border-bottom: 1px solid $red;
+        }
+    }
+    
     .argument {
         padding: 10px 0 10px 0;
-        border-bottom: 1px solid grey;
         h1 {
             font-size: 1.2rem;
         }
+        .content, .details {
+            padding-left: 10px;
+        }
+        .footnotes {
+            font-size: 0.8rem;
+        }
     }
-}
-
-#argument_body {
-    height: 200px;
 }
