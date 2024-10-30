@@ -12,11 +12,11 @@ class Proposition < ApplicationRecord
   after_create :give_author_upvote
 
   def yes_arguments
-    arguments.where(side: true)
+    arguments.where(side: true).order(created_at: :asc)
   end
 
   def no_arguments
-    arguments.where(side: false)
+    arguments.where(side: false).order(created_at: :asc)
   end
 
   def upvote_by(user)

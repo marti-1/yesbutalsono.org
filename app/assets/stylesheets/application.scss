@@ -20,6 +20,7 @@ $light-red: #D6CACC;
 $green: #3A5A31;
 $light-green: #CFD6CD;
 
+$grey-0: rgb(51, 51, 51);
 $grey-1: rgb(99, 107, 116);
 $grey-2: rgb(180, 182, 184);
 $grey-3: rgb(227, 230, 232);
@@ -33,6 +34,13 @@ a {
     &:hover {
         text-decoration: none;
     }
+}
+
+blockquote {
+    border-left: 5px solid $grey-2;
+    padding: 10px 0px 1px 20px;
+    margin: 10px 0;
+    color: $grey-0;
 }
 
 /*
