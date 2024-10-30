@@ -6,7 +6,7 @@
     <div class="actions">
       <small>
         <span data-controller="clipboard">
-          <%= link_to 'Ref', '#', class: 'text-secondary', data: {action: 'clipboard#copy', clipboardText: proposition_url(argument.proposition, anchor: "argument-#{argument.id}")} %>
+          <%= link_to 'Ref', '#', class: 'text-secondary', data: {action: 'clipboard#copy', clipboardText: proposition_path(argument.proposition, anchor: "argument-#{argument.id}")} %>
         </span>
         <% if argument.author == current_user %>
           <%= link_to 'Edit', edit_proposition_argument_path(argument.proposition, argument), class: 'text-secondary' %>
