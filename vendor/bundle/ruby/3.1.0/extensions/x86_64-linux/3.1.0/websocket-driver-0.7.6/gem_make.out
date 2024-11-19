@@ -1,0 +1,15 @@
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+/home/Martynas/.rbenv/versions/3.1.2/bin/ruby -I /home/Martynas/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20241024-48880-w5e8mz.rb extconf.rb
+creating Makefile
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= clean
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\=
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/Martynas/yesbutalsono.org/vendor/bundle/ruby/3.1.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20241024-48880-dwik73
